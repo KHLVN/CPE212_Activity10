@@ -1,0 +1,11 @@
+---
+ - name: Install ElasticSearch Kibana LogStash (Ubuntu)
+   package:
+     name: 
+       - elasticsearch
+       - kibana
+       - logstash
+     state: latest
+
+ - name: Enable ElasticSearch Kibana LogStash Service (Ubuntu)
+   
