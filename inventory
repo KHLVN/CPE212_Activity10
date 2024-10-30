@@ -1,4 +1,3 @@
+[db]
 server1
-server2
-server3
-centos	ansible_user=user_khlvn
+centos	ansible_user=khlvn

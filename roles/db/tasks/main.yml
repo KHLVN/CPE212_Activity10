@@ -1,4 +1,16 @@
 ---
+ - name: Add GPG key for ElasticSearch
+   tags: elasticsearch
+   apt_key:
+     url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+     state: present
+
+ - name: Add ElasticSearch to APT repository
+   tags: elasticsearch
+   apt_repository:
+     repo: "deb https://artifacts.elastic.co/packages/7.x/apt stable main"
+     filename: 'elastic-7.x'
+
  - name: Install ElasticSearch Kibana LogStash (Ubuntu)
    package:
      name: 
@@ -6,6 +18,11 @@
        - kibana
        - logstash
      state: latest
+   when: ansible_distribution == "Ubuntu"
 
  - name: Enable ElasticSearch Kibana LogStash Service (Ubuntu)
-   
+   systemd:
+      name: elasticsearch
+      enabled: yes
+      state: started
+   when: ansible_distribution == "Ubuntu"
