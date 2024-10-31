@@ -19,14 +19,3 @@
    become: true
    roles:
      - db
-
- - hosts: web
-   become: true
-   roles:
-     - web
-
- - hosts: file
-   become: true
-   roles:
-     - file
-
